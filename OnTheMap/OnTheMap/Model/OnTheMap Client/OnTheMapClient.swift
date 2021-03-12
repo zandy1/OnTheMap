@@ -90,7 +90,7 @@ class OnTheMapClient {
             let task = URLSession.shared.dataTask(with: request) {
                 data, response, error in
                 let newData = data?[start..<data!.count]
-                print(String(data: newData!, encoding: .utf8))
+                //print(String(data: newData!, encoding: .utf8))
                 guard let data = data else {
                     DispatchQueue.main.async {
                       completion(nil, error)
@@ -138,8 +138,8 @@ class OnTheMapClient {
         print("Getting Public Information")
         taskForGETRequest(url: Endpoints.getPublicUserData.url, response: User.self, start: 5) { (response, error) in
                    if let response = response {
-                    print(response.firstName)
-                    print(response.lastName)
+                    //print(response.firstName)
+                    //print(response.lastName)
                     completion(response,nil)
                    }
                    else {
@@ -194,10 +194,7 @@ class OnTheMapClient {
     
     class func createStudentLocation(firstName: String, lastName: String, mapString: String, mediaURL: String, latitude: Double, longitude: Double, completion: @escaping (Bool, Error?) -> Void) {
             let body = "{\"uniqueKey\": \"\(Auth.key)\",\"firstName\": \"\(firstName)\",\"lastName\": \"\(lastName)\",\"mapString\": \"\(mapString)\",\"mediaURL\": \"\(mediaURL)\",\"latitude\": \(latitude), \"longitude\": \(longitude)}"
-            //let body = "{\"uniqueKey\": \"1234\", \"firstName\": \"John\", \"lastName\": \"Doe\",\"mapString\": \"Mountain View, CA\", \"mediaURL\": \"https://udacity.com\",\"latitude\": 37.386052, \"longitude\": -122.083851}"
-            print("Create Body")
-            print(body)
-        taskForPostRequest(url: Endpoints.createSessionId.url, body: body, response: CreateStudentResponse.self, start: 0) { (response, error) in
+        taskForPostRequest(url: Endpoints.createStudentLocation.url, body: body, response: CreateStudentResponse.self, start: 0) { (response, error) in
                   if let response = response {
                     Auth.objectId = response.objectId
                     completion(true,nil)
@@ -218,7 +215,6 @@ class OnTheMapClient {
         request.httpMethod = "PUT"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = body.data(using: .utf8)
-        //request.httpBody = "{\"uniqueKey\": \"1234\", \"firstName\": \"John\", \"lastName\": \"Doe\",\"mapString\": \"Cupertino, CA\", \"mediaURL\": \"https://udacity.com\",\"latitude\": 37.322998, \"longitude\": -122.032182}".data(using: .utf8)
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
           if error != nil { // Handle error…

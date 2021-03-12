@@ -52,7 +52,6 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
     
     func handleCreateStudentLocation(success: Bool, error: Error?) {
       if (success) {
-        print("FINISHED CREATE")
         performSegue(withIdentifier: segueIdentifier, sender: self)
         self.dismiss(animated: true, completion: nil)
       }
@@ -63,7 +62,6 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
     
     func handleUpdateStudentLocation(success: Bool, error: Error?) {
       if (success) {
-        print("FINISHED UPDATE")
         performSegue(withIdentifier: segueIdentifier, sender: self)
       }
       else {
