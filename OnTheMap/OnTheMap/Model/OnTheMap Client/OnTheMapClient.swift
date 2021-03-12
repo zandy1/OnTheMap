@@ -81,7 +81,7 @@ class OnTheMapClient {
            return task
        }
 
-    class func taskForPostRequest<ResponseType:Decodable>(url: URL, body: String, response: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
+    class func taskForPostRequest<ResponseType:Decodable>(url: URL, body: String, response: ResponseType.Type, start: Int, completion: @escaping (ResponseType?, Error?) -> Void) {
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
             request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -89,8 +89,8 @@ class OnTheMapClient {
             request.httpBody = body.data(using: .utf8)
             let task = URLSession.shared.dataTask(with: request) {
                 data, response, error in
-                let newData = data?[5..<data!.count]
-                //print(String(data: newData!, encoding: .utf8))
+                let newData = data?[start..<data!.count]
+                print(String(data: newData!, encoding: .utf8))
                 guard let data = data else {
                     DispatchQueue.main.async {
                       completion(nil, error)
@@ -99,13 +99,13 @@ class OnTheMapClient {
                 }
                 let decoder = JSONDecoder()
                 do {
-                    let responseObject = try decoder.decode(ResponseType.self, from: data[5..<data.count])
+                    let responseObject = try decoder.decode(ResponseType.self, from: data[start..<data.count])
                     DispatchQueue.main.async {
                       completion(responseObject, nil)
                     }
                 } catch {
                     do {
-                        let errorResponse = try decoder.decode(OnTheMapResponse.self, from: data[5..<data.count])
+                        let errorResponse = try decoder.decode(OnTheMapResponse.self, from: data[start..<data.count])
                         DispatchQueue.main.async() {
                           completion(nil, errorResponse)
                         }
@@ -177,7 +177,7 @@ class OnTheMapClient {
     
     class func createSessionId(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
             let body = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}"
-        taskForPostRequest(url: Endpoints.createSessionId.url, body: body, response: SessionResponse.self) { (response, error) in
+        taskForPostRequest(url: Endpoints.createSessionId.url, body: body, response: SessionResponse.self, start: 5) { (response, error) in
                 if let response = response {
                    Auth.key = response.account.key
                     print(Auth.key)
@@ -197,7 +197,7 @@ class OnTheMapClient {
             //let body = "{\"uniqueKey\": \"1234\", \"firstName\": \"John\", \"lastName\": \"Doe\",\"mapString\": \"Mountain View, CA\", \"mediaURL\": \"https://udacity.com\",\"latitude\": 37.386052, \"longitude\": -122.083851}"
             print("Create Body")
             print(body)
-            taskForPostRequest(url: Endpoints.createSessionId.url, body: body, response: CreateStudentResponse.self) { (response, error) in
+        taskForPostRequest(url: Endpoints.createSessionId.url, body: body, response: CreateStudentResponse.self, start: 0) { (response, error) in
                   if let response = response {
                     Auth.objectId = response.objectId
                     completion(true,nil)
