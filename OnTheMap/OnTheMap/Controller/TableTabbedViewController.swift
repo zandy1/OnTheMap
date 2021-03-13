@@ -65,7 +65,7 @@ class TableTabbedViewController: UITableViewController {
         func showGetLocationFailure(message: String) {
             let alertVC = UIAlertController(title: "Unable To Download Student Information", message: message, preferredStyle: .alert)
             alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            show(alertVC, sender: nil)
+            self.present(alertVC, animated:true)
         }
     
     @IBAction func unwindToTab(segue:UIStoryboardSegue) { }

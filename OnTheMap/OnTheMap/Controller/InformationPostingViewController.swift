@@ -83,7 +83,7 @@ class InformationPostingViewController: UIViewController {
     func showFindLocationFailure(message: String) {
         let alertVC = UIAlertController(title: "Find Location Failed", message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        show(alertVC, sender: nil)
+        self.present(alertVC, animated:true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: (Any)?) {

@@ -85,7 +85,7 @@
                         <outlet property="loginButton" destination="Q3h-kR-SAg" id="Xgj-ll-bs5"/>
                         <outlet property="passwordTextField" destination="sQl-qG-cHa" id="PPH-lY-6qz"/>
                         <outlet property="signInButton" destination="fh8-XE-Ptw" id="Isr-2T-ptd"/>
-                        <segue destination="rfp-YO-guj" kind="presentation" identifier="completeLogin" id="qfV-Vb-st9"/>
+                        <segue destination="rfp-YO-guj" kind="presentation" identifier="completeLogin" modalPresentationStyle="fullScreen" id="qfV-Vb-st9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -116,7 +116,7 @@
                 <navigationController id="AFF-zC-zUU" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="icon_mapview-deselected" id="V67-bT-8Zx"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gRD-ni-rWs">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -132,11 +132,11 @@
             <objects>
                 <viewController id="pmg-Hz-OMd" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ePa-ie-AgE">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="IV8-vL-ace">
-                                <rect key="frame" x="-16" y="56" width="446" height="703"/>
+                                <rect key="frame" x="-16" y="88" width="446" height="725"/>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MMa-QR-DJM"/>
@@ -151,7 +151,7 @@
                     <navigationItem key="navigationItem" id="frP-WA-5Tl"/>
                     <connections>
                         <outlet property="mapView" destination="IV8-vL-ace" id="8As-Yq-buW"/>
-                        <segue destination="CV3-5q-lLj" kind="presentation" identifier="getLocation2" id="a3M-pm-M9Y"/>
+                        <segue destination="CV3-5q-lLj" kind="presentation" identifier="getLocation2" modalPresentationStyle="fullScreen" id="a3M-pm-M9Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kRg-YQ-b6N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -164,7 +164,7 @@
                 <navigationController id="8bw-5w-I5i" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="icon_listview-deselected" id="2Wu-jr-6ZX"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kM2-Ll-8dP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -180,7 +180,7 @@
             <objects>
                 <tableViewController title="On The Map" id="ku1-A7-Y5g" customClass="TableTabbedViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DHV-xq-lxI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -216,7 +216,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="MTc-mg-nob"/>
                     <connections>
-                        <segue destination="CV3-5q-lLj" kind="presentation" identifier="getLocation" id="Pub-Pe-p0p"/>
+                        <segue destination="CV3-5q-lLj" kind="presentation" identifier="getLocation" modalPresentationStyle="fullScreen" id="Pub-Pe-p0p"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k6M-Lb-qnk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -228,23 +228,23 @@
             <objects>
                 <viewController storyboardIdentifier="informationPostingViewControleer" id="CV3-5q-lLj" customClass="InformationPostingViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UrE-fx-jQM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7fE-DK-3TL">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Add Location" id="Ysv-RD-3jh"/>
                                 </items>
                             </navigationBar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_world" translatesAutoresizingMaskIntoConstraints="NO" id="KTx-SG-II8">
-                                <rect key="frame" x="-16" y="56" width="446" height="132"/>
+                                <rect key="frame" x="-16" y="88" width="446" height="132"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="132" id="EAu-j0-FIJ"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Mk1-7d-otb">
-                                <rect key="frame" x="16" y="355" width="382" height="98"/>
+                                <rect key="frame" x="16" y="404" width="382" height="98"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VOg-99-ip0">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="34"/>
@@ -292,7 +292,7 @@
                         <outlet property="linkTextField" destination="Htr-7I-fFz" id="VJV-9S-BLF"/>
                         <outlet property="locationTextField" destination="VOg-99-ip0" id="6Uy-iG-BHP"/>
                         <outlet property="myNavigationItem" destination="Ysv-RD-3jh" id="0BM-Tz-Kkd"/>
-                        <segue destination="M4E-qV-hHi" kind="presentation" identifier="tabaddlocation" id="DYn-He-hST"/>
+                        <segue destination="M4E-qV-hHi" kind="presentation" identifier="tabaddlocation" modalPresentationStyle="fullScreen" id="DYn-He-hST"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m4l-ts-0gb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -304,20 +304,20 @@
             <objects>
                 <viewController id="M4E-qV-hHi" customClass="AddLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hNd-mp-RK0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ry-yC-QJf">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Add Location" id="Z9x-B6-tss"/>
                                 </items>
                             </navigationBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Cqn-ja-I68">
-                                <rect key="frame" x="-16" y="56" width="446" height="752"/>
+                                <rect key="frame" x="-16" y="88" width="446" height="774"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzy-7h-fdy" customClass="LoginButton" customModule="OnTheMap" customModuleProvider="target">
-                                <rect key="frame" x="157" y="762" width="100" height="30"/>
+                                <rect key="frame" x="157" y="816" width="100" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="8NJ-be-wne"/>
                                 </constraints>

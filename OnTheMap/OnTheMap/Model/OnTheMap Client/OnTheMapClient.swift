@@ -11,7 +11,7 @@ import UIKit
 class OnTheMapClient {
     
     static let base = "https://onthemap-api.udacity.com/v1"
-    static let limit = "?limit=100"
+    static let limit = "&limit=100"
     
     struct Auth {
            static var key = ""

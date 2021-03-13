@@ -82,7 +82,7 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
     func showFailure(failureType: String, message: String) {
         let alertVC = UIAlertController(title: failureType, message: message, preferredStyle: .alert)
          alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-         show(alertVC, sender: nil)
+         self.present(alertVC, animated:true)
     }
   
     func drawMap() {
@@ -101,6 +101,9 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
                         
        // We add the annotations to the map.
        self.mapView.addAnnotations(annotations)
+        
+       // Zoom Region
+        self.mapView.setRegion(MKCoordinateRegion(center:annotation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000), animated:true)
        }
             
        // MARK: - MKMapViewDelegate

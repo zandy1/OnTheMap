@@ -57,6 +57,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func handleGetLocation(success: Bool, error: Error?) {
                 //setGetLocation(false)
                 if (success) {
+                    self.clear_pins()
                     self.drawMap()
                 }
                 else {
@@ -64,21 +65,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 }
             }
     
-     /*
-     func setGetLocation(_ gettingLocation: Bool) {
-             if gettingLocation {
-                 activityIndicator.startAnimating()
-             }
-             else {
-                 activityIndicator.stopAnimating()
-             }
-         }
-     */
-    
         func showGetLocationFailure(message: String) {
             let alertVC = UIAlertController(title: "Unable To Download Student Information", message: message, preferredStyle: .alert)
             alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            show(alertVC, sender: nil)
+            self.present(alertVC, animated:true)
         }
     
     override func prepare(for segue: UIStoryboardSegue, sender: (Any)?) {
@@ -97,7 +87,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         for i in 0..<OnTheMapModel.studentInformation.count
 
         {
-                    
                     let lat = CLLocationDegrees(OnTheMapModel.studentInformation[i].latitude as! Double)
                     let long = CLLocationDegrees(OnTheMapModel.studentInformation[i].longitude as! Double)
                     
@@ -158,6 +147,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 app.openURL(URL(string: toOpen)!)
             }
         }
+    }
+    
+    // Remove Old Pins
+    func clear_pins() {
+      for _annotation in self.mapView.annotations {
+         self.mapView.removeAnnotation(_annotation)
+      }
     }
 
 }
